@@ -5,4 +5,4 @@ const PORT = 3000;
 
 app.use(express.static("./public"));
 
-app.listen(PORT, () => console.log(`server is running at port : ${PORT}.`));
+app.listen(process.env.PORT || PORT, () => console.log(`server is running at port : ${PORT}.`));
