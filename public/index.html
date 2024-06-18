@@ -14,6 +14,7 @@
       <!--<script src="./src/checkout.js"></script>-->
       <script type="text/javascript">         
          //your options
+         const baseUrl = "https://wpg-hpp-js-3bfe628a3803.herokuapp.com/";
          var customOptions = {
          url: 'https://payments-test.worldpay.com/app/hpp/integration/wpg/corporate?OrderKey=DEMO^kenjijsxml3365133657&amp;Ticket=00171906269485902uz996jdsQ8KkCNuz3VTjzQCvv6lAXEVtmrZwxM&amp;source=https%3A%2F%2Fsecure-test.worldpay.com',
          type: 'lightbox',
@@ -26,11 +27,11 @@
          language: 'en',
          country: 'gb',
          preferredPaymentMethod: 'VISA-SSL',
-         successURL: 'http://127.0.0.1:3000/success.html',
-         cancelURL: 'https://payments-test.worldpay.com/cancel',
-         failureURL: 'https://payments-test.worldpay.com/failure',
-         pendingURL: 'https://payments-test.worldpay.com/pending',
-         errorURL: 'https://payments-test.worldpay.com/error'
+         successURL: baseUrl + '/success.html',
+         cancelURL: baseUrl + '/cancel',
+         failureURL: baseUrl + '/failure',
+         pendingURL: baseUrl + '/pending',
+         errorURL: baseUrl + '/error'
          };
          //initialise the library and pass options
          var libraryObject = new WPCL.Library();
