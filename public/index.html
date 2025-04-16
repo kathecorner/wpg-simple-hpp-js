@@ -1,55 +1,36 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title> My test page </title>
-      <script src='https://payments.worldpay.com/resources/hpp/integrations/embedded/js/hpp-embedded-integration-library.js'></script>
-      
-   </head>
-   <body>
-   <!-- body onload="window.globalFunction.postXml()">-->
-      <div>This is a test page that utilizes iframe sdk</div>
-      <div id='custom-html'></div>
-      <p id="xmlResult"></p>
-      <a href='#' id='custom-trigger'>Checkout</a>
-      <!--<script src="./src/checkout.js"></script>-->
-      <script type="text/javascript">         
-         //your options
-         const baseUrl = "https://wpg-hpp-js-3bfe628a3803.herokuapp.com/";
-         var customOptions = {
-         url: 'https://payments-test.worldpay.com/app/hpp/integration/wpg/corporate?OrderKey=DEMO^jsxml3365133657&Ticket=00174522450044902Mn5xWrE_tp_lGCJ_gl-dlwdHQFlXnwdrf-8JzD&source=https%3A%2F%2Fsecure-test.worldpay.com',
-         type: 'iframe',
-         inject: 'onload',
-         target: "custom-html",
-         accessibility: true,
-         debug: false,
-         language: 'en',
-         country: 'gb',
-         preferredPaymentMethod: 'VISA-SSL',
-         successURL: baseUrl + '/success.html',
-         cancelURL: baseUrl + '/cancel.html',
-         failureURL: baseUrl + '/failure',
-         pendingURL: baseUrl + '/pending',
-         errorURL: baseUrl + '/error'
-         };
-         //initialise the library and pass options
-         var libraryObject = new WPCL.Library();
-         console.log(customOptions.url)
-         libraryObject.setup(customOptions);
 
+<head>
+    <title> My test page </title>
+    <script src='https://payments.worldpay.com/resources/hpp/integrations/embedded/js/hpp-embedded-integration-library.js'></script>
+</head>
 
-         function changeColors() {
-            document.getElementById("custom-trigger").style.backgroundColor = "#00FF00";
-            //document.getElementById("custom-html")=libraryObject.url;
-            console.log("this is in index.html");
-            
-         }
+<body>
+    <div>This is my test page as a merchant</div>
+    <div id='custom-html'></div>
+    <script type="text/javascript">
+        //your options
+        var customOptions = {
+            url: 'https://payments-test.worldpay.com/app/hpp/integration/wpg/corporate?OrderKey=DEMO^jsxml3365133657&Ticket=00174522450044902Mn5xWrE_tp_lGCJ_gl-dlwdHQFlXnwdrf-8JzD&source=https%3A%2F%2Fsecure-test.worldpay.com',
+            type: 'iframe',
+            inject: 'onload',
+            target: 'custom-html',
+            accessibility: true,
+            debug: false,
+            language: 'en',
+            country: 'gb',
+            preferredPaymentMethod: 'VISA-SSL',
+            successURL: 'https://example.com/success',
+            cancelURL: 'https://example.com/cancel',
+            failureURL: 'https://example.com/failure',
+            pendingURL: 'https://example.com/pending',
+            errorURL: 'https://example.com/error'
+        };
+        //initialise the library and pass options
+        var libraryObject = new WPCL.Library();
+        libraryObject.setup(customOptions);
+    </script>
+</body>
 
-         function onClickHandleA () {
-            window.location.replace(customOptions.url);
-  }
-
-
-  
-
-      </script>
 </html>
